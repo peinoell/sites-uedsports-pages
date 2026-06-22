@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UED体育 · 简明使用指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f5f1eb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #2e2b28;
+      line-height: 1.6;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #faf8f5;
+      padding: 2.5rem 2.2rem 3.5rem;
+      border-radius: 24px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    /* 导航条 */
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #e5ddd4;
+      margin-bottom: 2rem;
+    }
+
+    .nav-brand {
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: 0.02em;
+      color: #3d3732;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.95rem;
+      color: #5f554b;
+      padding: 0.2rem 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.15s;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #b8a694;
+      color: #2e2b28;
+    }
+
+    /* hero 区 */
+    .hero {
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+      color: #2c2621;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #4f4840;
+      max-width: 80%;
+    }
+
+    /* 引用/提示框 */
+    .callout {
+      background: #efe9e0;
+      padding: 1.3rem 1.6rem;
+      border-radius: 14px;
+      margin: 2rem 0 2.2rem;
+      border-left: 5px solid #b8a694;
+      font-size: 0.98rem;
+    }
+
+    .callout strong {
+      color: #2f2822;
+    }
+
+    /* 场景模块 三个卡片 */
+    .scenes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 2.2rem 0;
+    }
+
+    .scene-card {
+      flex: 1 1 240px;
+      background: #fffcf9;
+      border: 1px solid #e5ddd4;
+      border-radius: 18px;
+      padding: 1.5rem 1.2rem 1.6rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .scene-card:hover {
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    .scene-card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: #2f2822;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .scene-card p {
+      font-size: 0.95rem;
+      color: #4d453e;
+    }
+
+    /* 常见说明 / FAQ 摘要 */
+    .faq-section {
+      margin: 2.5rem 0 1.8rem;
+    }
+
+    .faq-section h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      color: #2c2621;
+      border-left: 4px solid #b8a694;
+      padding-left: 1rem;
+    }
+
+    .faq-item {
+      display: flex;
+      flex-direction: column;
+      padding: 0.8rem 0 0.9rem;
+      border-bottom: 1px dashed #e1d8ce;
+    }
+
+    .faq-item:last-of-type {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #3a322b;
+      font-size: 1rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .faq-a {
+      font-size: 0.93rem;
+      color: #5c5248;
+    }
+
+    .faq-a a {
+      color: #6a5c4e;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: #cbbeb0;
+    }
+
+    .faq-a a:hover {
+      color: #2f2822;
+      text-decoration-color: #2f2822;
+    }
+
+    /* 底部简单引用 */
+    .footnote {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e5ddd4;
+      font-size: 0.9rem;
+      color: #6b6055;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    .footnote a {
+      color: #3d3732;
+      text-decoration: none;
+      border-bottom: 1px dotted #b8a694;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem 0.8rem 2.5rem;
+      }
+      .page {
+        padding: 1.8rem 1.2rem 2.5rem;
+      }
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .hero p {
+        max-width: 100%;
+      }
+      .scene-card {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- 顶部导航 -->
+  <nav class="nav">
+    <span class="nav-brand">简明导航</span>
+    <div class="nav-links">
+      <a href="#">介绍</a>
+      <a href="#">场景</a>
+      <a href="#">说明</a>
+    </div>
+  </nav>
+
+  <!-- 核心介绍 -->
+  <section class="hero">
+    <h1>UED体育 · 轻量导航与指南</h1>
+    <p>面向新用户与日常使用者，提供清晰的功能场景划分及访问提醒，帮助您快速理解平台的使用逻辑。</p>
+  </section>
+
+  <!-- 提示框 / 引用块 -->
+  <div class="callout">
+    <strong>访问提醒</strong>：<a href="https://sites-uedsports.com">ued体育</a> 为综合体育信息平台，建议使用前确认您所在地区的网络限制与合规要求。本站仅提供功能指引与说明，不承担因访问导致的本地法律风险。
+  </div>
+
+  <!-- 三个场景模块 -->
+  <section>
+    <h2 style="font-weight:500; font-size:1.2rem; margin-bottom:0.8rem; color:#2c2621;">常用场景速览</h2>
+    <div class="scenes">
+      <div class="scene-card">
+        <h3>📋 信息查询</h3>
+        <p>赛事日程、队伍数据、历史统计——通过分类入口可快速检索所需内容。页面结构偏重文字与表格，适合深度浏览。</p>
+      </div>
+      <div class="scene-card">
+        <h3>📱 移动端适配</h3>
+        <p>多数页面已针对手机与平板优化排版，但部分复杂表格仍建议使用横屏或桌面设备查看，保证数据完整。</p>
+      </div>
+      <div class="scene-card">
+        <h3>⚙️ 功能引导</h3>
+        <p>新手可留意页面顶部的导航分层与底部辅助链接，多数操作无须注册即可使用，部分互动功能需登录。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常见说明 / FAQ 摘要 -->
+  <section class="faq-section">
+    <h2>常见说明</h2>
+    <div class="faq-item">
+      <span class="faq-q">是否需要注册才能浏览？</span>
+      <span class="faq-a">绝大部分内容可以直接查看，包括赛程、新闻与基础数据。个别功能（如收藏、评论）需要创建账号。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">页面加载缓慢怎么办？</span>
+      <span class="faq-a">建议切换至稳定的网络环境，或尝试刷新。部分资源部署在海外，可能受国际链路影响。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">如何快速定位到某个联赛？</span>
+      <span class="faq-a">首页与导航栏均设置了按区域/项目筛选的入口，也可直接使用站内搜索。具体路径请参考 <a href="https://sites-uedsports.com">ued体育</a> 的顶部菜单。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">数据更新频率如何？</span>
+      <span class="faq-a">实时比分与赛果在比赛进行中持续刷新，历史数据与统计每日更新一次。具体延迟视数据源而定。</span>
+    </div>
+  </section>
+
+  <!-- 底部引用/附加说明 -->
+  <div class="footnote">
+    <span>本页面为独立介绍页，与来源站相互独立。</span>
+    <span>访问时请留意本地法规 · <a href="https://sites-uedsports.com">ued体育</a></span>
+  </div>
+</div>
+</body>
+</html>
