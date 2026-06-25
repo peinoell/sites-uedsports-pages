@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯 · 赛事导航与指数平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e2a3a;
+            background: #f5f7fa;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #132b44 100%);
+            color: #e3eef9;
+            padding: 3rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            letter-spacing: 0.02em;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero h1 span {
+            color: #f6c445;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+
+        .nav-bar {
+            background: #0b1a2e;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .nav-bar a {
+            color: #b9d0e5;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.15s ease;
+        }
+
+        .nav-bar a:hover {
+            color: #f6c445;
+            border-bottom-color: #f6c445;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+        }
+
+        .intro-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            margin: -1.2rem 0 2.5rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+        }
+
+        .intro-section p {
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        .intro-section strong {
+            color: #1d3f5e;
+        }
+
+        .intro-section a {
+            color: #d97706;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(217,119,6,0.3);
+        }
+
+        .intro-section a:hover {
+            border-bottom-color: #b45309;
+            color: #b45309;
+        }
+
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+            margin: 2.8rem 0 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .scenario-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .scenario-card {
+            background: white;
+            border-radius: 18px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border-left: 4px solid #f3c14b;
+            transition: 0.2s ease;
+        }
+
+        .scenario-card:hover {
+            box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+
+        .scenario-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+            color: #11324d;
+        }
+
+        .scenario-card p {
+            font-size: 0.95rem;
+            color: #3d4f62;
+            line-height: 1.6;
+        }
+
+        .faq-preview {
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem 2.2rem;
+            margin: 2.8rem 0;
+        }
+
+        .faq-preview h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1.4rem;
+            color: #11324d;
+            border-left: 5px solid #f6c445;
+            padding-left: 1rem;
+        }
+
+        .faq-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #eef2f6;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+            color: #1e2a3a;
+        }
+
+        .faq-item p {
+            font-size: 0.92rem;
+            color: #4a5e72;
+            margin: 0.2rem 0 0;
+        }
+
+        .tip-badge {
+            background: #eef4fa;
+            border-radius: 30px;
+            padding: 0.35rem 1rem;
+            display: inline-block;
+            font-size: 0.8rem;
+            color: #1d3f5e;
+            letter-spacing: 0.4px;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6b7c8e;
+            padding: 2rem 0 1.5rem;
+            border-top: 1px solid #dae2ec;
+        }
+
+        .footer-note a {
+            color: #d97706;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .intro-section {
+                padding: 1.5rem;
+            }
+            .faq-preview {
+                padding: 1.3rem;
+            }
+            .nav-bar {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>⚽ 赛事 · <span>指数</span> · 导航</h1>
+        <p>面向关注世界杯动态的球迷与分析师，提供清晰的数据入口和场景化指引。快速定位你需要的信息层。</p>
+    </header>
+
+    <nav class="nav-bar">
+        <a href="#intro">概览</a>
+        <a href="#scenarios">场景</a>
+        <a href="#faq">说明</a>
+    </nav>
+
+    <main class="container">
+        <section class="intro-section" id="intro">
+            <p>无论是查看小组赛积分、淘汰赛对阵，还是追踪夺冠指数、射手榜变动，<strong>cnindex-fifa2026</strong> 围绕国际足联2026年世界杯构建了一套轻量索引体系。你可以在页面中直接找到关于<a href="https://cnindex-fifa2026.com">世界杯</a>的核心模块，无需在多层菜单中反复跳转。</p>
+            <p>该站点不提供实时直播或复杂交互，而是以“索引+说明”的方式将赛事结构、排名参考和常见问题集中呈现，适合赛前快速了解框架、赛中对照验证。</p>
+        </section>
+
+        <section id="scenarios">
+            <div class="scenario-grid">
+                <div class="scenario-card">
+                    <span class="tip-badge">📊 场景一</span>
+                    <h3>赛程与对阵速查</h3>
+                    <p>从小组赛阶段到淘汰赛，每个比赛日的对战双方、时间窗口及场地信息均可通过分类列表定位。适合需要提前规划观看日程的用户。</p>
+                </div>
+                <div class="scenario-card">
+                    <span class="tip-badge">📈 场景二</span>
+                    <h3>指数与排名参考</h3>
+                    <p>展示各支球队的近期表现指数、晋级概率参考以及小组头名预测。数据来源于赛事统计模型，帮助用户形成自己的判断依据。</p>
+                </div>
+                <div class="scenario-card">
+                    <span class="tip-badge">🧩 场景三</span>
+                    <h3>关键规则与变动</h3>
+                    <p>本届世界杯的扩军赛制、积分规则、出线逻辑等要点以简短条目列出。对不熟悉最新赛制的观众来说，是快速上手的入口。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-preview" id="faq">
+            <h2>常见说明</h2>
+            <div class="faq-item">
+                <strong>这个页面主要提供什么？</strong>
+                <p>它作为世界杯相关信息的导航站点，聚合了赛程、球队指数、规则摘要等，不包含视频直播或博彩功能。</p>
+            </div>
+            <div class="faq-item">
+                <strong>数据更新频率如何？</strong>
+                <p>指数与排名数据跟随赛事阶段进行周期性刷新，具体更新时间会在页面内标注。赛程部分依据官方公告调整。</p>
+            </div>
+            <div class="faq-item">
+                <strong>是否需要注册或付费？</strong>
+                <p>所有展示内容均可直接阅读，无需登录或订阅。站点不收集用户个人信息。</p>
+            </div>
+            <div class="faq-item">
+                <strong>如何访问世界杯核心模块？</strong>
+                <p>直接从本页顶部导航或内文链接进入 <a href="https://cnindex-fifa2026.com">世界杯</a> 索引页，即可看到结构化分类。</p>
+            </div>
+        </section>
+
+        <div class="footer-note">
+            <p>cnindex-fifa2026 · 赛事信息仅供参考 · 以官方发布为准</p>
+            <p style="margin-top: 0.3rem;"><a href="https://cnindex-fifa2026.com">世界杯</a> — 定位赛事数据索引</p>
+        </div>
+    </main>
+</body>
+</html>
